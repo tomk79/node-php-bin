@@ -1,0 +1,181 @@
+This snapshot was automatically generated on
+Wed, 13 May 2015 20:23:08 +0000
+
+Version: 5.6.8
+Branch: HEAD
+Build: Release_TS
+
+Built-in Extensions
+===========================
+Core
+bcmath
+calendar
+com_dotnet
+ctype
+date
+ereg
+filter
+hash
+iconv
+json
+mcrypt
+SPL
+odbc
+pcre
+Reflection
+session
+sockets
+standard
+mysqlnd
+tidy
+tokenizer
+zip
+zlib
+libxml
+dom
+PDO
+pdo_mysql
+Phar
+SimpleXML
+soap
+wddx
+xml
+xmlreader
+xmlwriter
+
+
+Dependency information:
+Module: php5apache2_2.dll
+===========================
+	msvcr110.dll
+
+Module: php-cgi.exe
+===========================
+	msvcr110.dll
+
+Module: php.exe
+===========================
+	msvcr110.dll
+
+Module: php_apcu.dll
+===========================
+	msvcr110.dll
+
+Module: php_bz2.dll
+===========================
+	msvcr110.dll
+
+Module: php_curl.dll
+===========================
+	libeay32.dll
+	ssleay32.dll
+	normaliz.dll
+	msvcr110.dll
+
+Module: php_fileinfo.dll
+===========================
+	msvcr110.dll
+
+Module: php_ftp.dll
+===========================
+	msvcr110.dll
+
+Module: php_gd2.dll
+===========================
+	msvcr110.dll
+
+Module: php_gettext.dll
+===========================
+	msvcr110.dll
+
+Module: php_gmp.dll
+===========================
+	msvcr110.dll
+
+Module: php_imagick.dll
+===========================
+	core_rl_wand_.dll
+	core_rl_magick_.dll
+	msvcr110.dll
+
+Module: php_imap.dll
+===========================
+	msvcr110.dll
+
+Module: php_intl.dll
+===========================
+	icuuc53.dll
+	icuin53.dll
+	icuio53.dll
+	msvcr110.dll
+	msvcp110.dll
+
+Module: php_ldap.dll
+===========================
+	libsasl.dll
+	msvcr110.dll
+	ssleay32.dll
+	libeay32.dll
+
+Module: php_mbstring.dll
+===========================
+	msvcr110.dll
+
+Module: php_opcache.dll
+===========================
+	msvcr110.dll
+
+Module: php_openssl.dll
+===========================
+	ssleay32.dll
+	libeay32.dll
+	msvcr110.dll
+
+Module: php_pgsql.dll
+===========================
+	libpq.dll
+	msvcr110.dll
+
+Module: php_shmop.dll
+===========================
+	msvcr110.dll
+
+Module: php_sqlite3.dll
+===========================
+	msvcr110.dll
+
+Module: php_xcache.dll
+===========================
+	msvcr110.dll
+
+Module: php_exif.dll
+===========================
+	msvcr110.dll
+
+Module: php_mysql.dll
+===========================
+	libmysql.dll
+	msvcr110.dll
+
+Module: php_mysqli.dll
+===========================
+	libmysql.dll
+	msvcr110.dll
+
+Module: php_pdo_firebird.dll
+===========================
+	msvcr110.dll
+
+Module: php_pdo_odbc.dll
+===========================
+	msvcr110.dll
+
+Module: php_pdo_pgsql.dll
+===========================
+	libpq.dll
+	msvcr110.dll
+
+Module: php_pdo_sqlite.dll
+===========================
+	msvcr110.dll
+

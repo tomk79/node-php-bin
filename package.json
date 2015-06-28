@@ -1,0 +1,19 @@
+{
+  "name": "node-php-bin",
+  "version": "0.0.1",
+  "description": "provide PHP binary.",
+  "main": "index.js",
+  "scripts": {
+    "test": "./node_modules/mocha/bin/mocha --ui tdd ./tests/"
+  },
+  "keywords": [
+    "php"
+  ],
+  "author": "Tomoya Koyanagi",
+  "license": "MIT",
+  "dependencies": {
+  },
+  "devDependencies": {
+    "mocha": "^2.1.0"
+  }
+}
