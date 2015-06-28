@@ -4,7 +4,7 @@
   "description": "provide PHP binary.",
   "main": "libs/main.js",
   "scripts": {
-    "test": "./node_modules/mocha/bin/mocha --ui tdd ./tests/"
+    "test": "mocha --ui tdd ./tests/"
   },
   "keywords": [
     "php"

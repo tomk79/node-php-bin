@@ -6,17 +6,29 @@ module.exports = new (function(){
 	var fs = require('fs');
 
 	this.get = function(options){
-		var phpBin, phpVersion, phpIni;
+		var phpBin, phpVersion, phpIni, phpPresetCmdOptions;
 		function phpAgent(options){
 			options = options || {};
-			phpBin = fs.realpathSync( __dirname+'/../bin/'+process.platform+'/5.6.7/php'+(process.platform == 'win32'?'.exe':'') );
+			phpBin = fs.realpathSync( __dirname+'/../bin/'+process.platform+'/'+(process.platform == 'win32'?'5.6.8':'5.6.7')+'/php'+(process.platform == 'win32'?'.exe':'') );
 			phpIni = fs.realpathSync( __dirname+'/../bin/'+process.platform+'/php.ini' );
+			phpPresetCmdOptions = [];
+			if( process.platform == 'win32' ){
+				phpPresetCmdOptions = phpPresetCmdOptions.concat([
+					'-d', 'extension_dir='+fs.realpathSync( __dirname+'/../bin/'+process.platform+'/5.6.8/ext/' )
+				]);
+			}
+
 			if(options.bin){
 				phpBin = options.bin;
 			}
 			if(options.ini){
+				phpPresetCmdOptions = [];
 				phpIni = options.ini;
 			}
+
+			phpPresetCmdOptions = phpPresetCmdOptions.concat([
+				'-c', phpIni
+			]);
 		}
 		/**
 		 * PHPのパスを取得
@@ -89,7 +101,7 @@ module.exports = new (function(){
 			options = options || {};
 			var child = childProcess.spawn(
 				phpBin,
-				['-c',phpIni].concat(cliParams),
+				phpPresetCmdOptions.concat(cliParams),
 				options
 			);
 			return child;

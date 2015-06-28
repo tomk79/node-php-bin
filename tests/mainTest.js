@@ -57,6 +57,18 @@ describe('デフォルト設定でコマンドを実行する', function() {
 		);
 	});
 
+	it("script 'pwd.php'", function(done) {
+		var child = php.script(
+			[__dirname+'/php/pwd.php'],
+			function( data, error, code ){
+				assert.equal(code, 0);
+				// console.log(data);
+				assert.equal(data, fs.realpathSync('.'));
+				done();
+			}
+		);
+	});
+
 	it("spawn 'mbstring.php'", function(done) {
 		var child = php.spawn(
 			[__dirname+'/php/mbstring.php'],
