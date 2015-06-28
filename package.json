@@ -2,7 +2,7 @@
   "name": "node-php-bin",
   "version": "0.0.1",
   "description": "provide PHP binary.",
-  "main": "index.js",
+  "main": "libs/main.js",
   "scripts": {
     "test": "./node_modules/mocha/bin/mocha --ui tdd ./tests/"
   },
@@ -11,6 +11,10 @@
   ],
   "author": "Tomoya Koyanagi",
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/tomk79/node-php-bin.git"
+  },
   "dependencies": {
   },
   "devDependencies": {
