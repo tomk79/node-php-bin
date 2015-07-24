@@ -26,9 +26,10 @@ describe('デフォルト設定でコマンドを実行する', function() {
 	it("PHPバイナリのバージョン番号を得る", function(done) {
 		var child = php.getPhpVersion(function(gotVersion){
 			var version;
+			console.log(gotVersion);
 			if(process.platform == 'linux'){
-				console.log(gotVersion);
 				done();
+				return;
 			}else if(process.platform == 'darwin'){
 				version = '5.6.7';
 			}else if(process.platform == 'win32'){
