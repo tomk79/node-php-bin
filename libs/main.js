@@ -5,9 +5,6 @@ module.exports = new (function(){
 	var childProcess = require('child_process');
 	var fs = require('fs');
 	var _platform = process.platform;
-	if(_platform == 'linux'){
-		_platform = 'darwin';
-	}
 
 	this.get = function(options){
 		var phpBin, phpVersion, phpIni, phpPresetCmdOptions;
@@ -16,6 +13,12 @@ module.exports = new (function(){
 			phpBin = fs.realpathSync( __dirname+'/../bin/'+_platform+'/'+(_platform == 'win32'?'5.6.8':'5.6.7')+'/php'+(_platform == 'win32'?'.exe':'') );
 			phpIni = fs.realpathSync( __dirname+'/../bin/'+_platform+'/php.ini' );
 			phpPresetCmdOptions = [];
+			if( _platform == 'linux' ){
+				// linux で動くバイナリは含まれていないので、
+				// 内部コマンドをデフォルトにする。
+				phpBin = 'php';
+				phpIni = null;
+			}
 			if( _platform == 'win32' ){
 				phpPresetCmdOptions = phpPresetCmdOptions.concat([
 					'-d', 'extension_dir='+fs.realpathSync( __dirname+'/../bin/'+_platform+'/5.6.8/ext/' )
