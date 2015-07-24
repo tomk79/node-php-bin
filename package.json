@@ -1,6 +1,6 @@
 {
   "name": "node-php-bin",
-  "version": "0.0.2",
+  "version": "0.1.1",
   "description": "provide PHP binary.",
   "main": "libs/main.js",
   "scripts": {
