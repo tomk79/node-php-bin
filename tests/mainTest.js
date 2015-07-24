@@ -12,7 +12,9 @@ describe('デフォルト設定でコマンドを実行する', function() {
 	it("PHPバイナリのパスを取得", function(done) {
 		var phpPath = php.getPath();
 		var path = undefined;
-		if(process.platform == 'darwin'){
+		if(process.platform == 'linux'){
+			path = 'php';
+		}else if(process.platform == 'darwin'){
 			path = fs.realpathSync(__dirname+'/../bin/darwin/5.6.7/php');
 		}else if(process.platform == 'win32'){
 			path = fs.realpathSync(__dirname+'/../bin/win32/5.6.8/php.exe');
@@ -24,7 +26,10 @@ describe('デフォルト設定でコマンドを実行する', function() {
 	it("PHPバイナリのバージョン番号を得る", function(done) {
 		var child = php.getPhpVersion(function(gotVersion){
 			var version;
-			if(process.platform == 'darwin'){
+			if(process.platform == 'linux'){
+				console.log(gotVersion);
+				done();
+			}else if(process.platform == 'darwin'){
 				version = '5.6.7';
 			}else if(process.platform == 'win32'){
 				version = '5.6.8';

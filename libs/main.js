@@ -10,14 +10,15 @@ module.exports = new (function(){
 		var phpBin, phpVersion, phpIni, phpPresetCmdOptions;
 		function phpAgent(options){
 			options = options || {};
-			phpBin = fs.realpathSync( __dirname+'/../bin/'+_platform+'/'+(_platform == 'win32'?'5.6.8':'5.6.7')+'/php'+(_platform == 'win32'?'.exe':'') );
-			phpIni = fs.realpathSync( __dirname+'/../bin/'+_platform+'/php.ini' );
 			phpPresetCmdOptions = [];
 			if( _platform == 'linux' ){
 				// linux で動くバイナリは含まれていないので、
 				// 内部コマンドをデフォルトにする。
 				phpBin = 'php';
 				phpIni = null;
+			}else{
+				phpBin = fs.realpathSync( __dirname+'/../bin/'+_platform+'/'+(_platform == 'win32'?'5.6.8':'5.6.7')+'/php'+(_platform == 'win32'?'.exe':'') );
+				phpIni = fs.realpathSync( __dirname+'/../bin/'+_platform+'/php.ini' );
 			}
 			if( _platform == 'win32' ){
 				phpPresetCmdOptions = phpPresetCmdOptions.concat([
@@ -42,6 +43,7 @@ module.exports = new (function(){
 		 * PHPのパスを取得
 		 */
 		phpAgent.prototype.getPath = function(){
+			if(phpBin == 'php'){return phpBin;}
 			return fs.realpathSync(phpBin);
 		}
 
@@ -49,6 +51,7 @@ module.exports = new (function(){
 		 * php.iniのパスを取得
 		 */
 		phpAgent.prototype.getIniPath = function(){
+			if(phpBin == null){return null;}
 			return fs.realpathSync(phpIni);
 		}
 
