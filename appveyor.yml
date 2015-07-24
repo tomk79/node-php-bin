@@ -8,7 +8,7 @@ os: Windows Server 2012 R2
 version: "{build}-{branch}"
 
 # Set a known clone folder
-clone_folder: C:\projects\px2agent
+clone_folder: C:\projects\node-php-bin
 
 # environments
 environment:
@@ -58,7 +58,7 @@ install:
 
 
   ## Set Composer.
-  - cd C:\projects\px2agent
+  - cd C:\projects\node-php-bin
   - php -r "readfile('https://getcomposer.org/installer');" | php
   - php composer.phar --version
   - php composer.phar config -g github-oauth.github.com %oauthtoken%
