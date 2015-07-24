@@ -4,17 +4,21 @@
 module.exports = new (function(){
 	var childProcess = require('child_process');
 	var fs = require('fs');
+	var _platform = process.platform;
+	if(_platform == 'linux'){
+		_platform = 'darwin';
+	}
 
 	this.get = function(options){
 		var phpBin, phpVersion, phpIni, phpPresetCmdOptions;
 		function phpAgent(options){
 			options = options || {};
-			phpBin = fs.realpathSync( __dirname+'/../bin/'+process.platform+'/'+(process.platform == 'win32'?'5.6.8':'5.6.7')+'/php'+(process.platform == 'win32'?'.exe':'') );
-			phpIni = fs.realpathSync( __dirname+'/../bin/'+process.platform+'/php.ini' );
+			phpBin = fs.realpathSync( __dirname+'/../bin/'+_platform+'/'+(_platform == 'win32'?'5.6.8':'5.6.7')+'/php'+(_platform == 'win32'?'.exe':'') );
+			phpIni = fs.realpathSync( __dirname+'/../bin/'+_platform+'/php.ini' );
 			phpPresetCmdOptions = [];
-			if( process.platform == 'win32' ){
+			if( _platform == 'win32' ){
 				phpPresetCmdOptions = phpPresetCmdOptions.concat([
-					'-d', 'extension_dir='+fs.realpathSync( __dirname+'/../bin/'+process.platform+'/5.6.8/ext/' )
+					'-d', 'extension_dir='+fs.realpathSync( __dirname+'/../bin/'+_platform+'/5.6.8/ext/' )
 				]);
 			}
 
@@ -30,11 +34,19 @@ module.exports = new (function(){
 				'-c', phpIni
 			]);
 		}
+
 		/**
 		 * PHPのパスを取得
 		 */
 		phpAgent.prototype.getPath = function(){
 			return fs.realpathSync(phpBin);
+		}
+
+		/**
+		 * php.iniのパスを取得
+		 */
+		phpAgent.prototype.getIniPath = function(){
+			return fs.realpathSync(phpIni);
 		}
 
 		/**
