@@ -16,7 +16,7 @@ before_install:
   - php -r "readfile('https://getcomposer.org/installer');" | php
 
 before_script:
-  - php composer.phar install
+  # - php composer.phar install
   - npm install
 
 script:
