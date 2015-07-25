@@ -56,9 +56,9 @@ install:
   - php -v
   - where php
 
+  - cd C:\projects\node-php-bin
 
   ## Set Composer.
-  #- cd C:\projects\node-php-bin
   #- php -r "readfile('https://getcomposer.org/installer');" | php
   #- php composer.phar --version
   #- php composer.phar config -g github-oauth.github.com %oauthtoken%
