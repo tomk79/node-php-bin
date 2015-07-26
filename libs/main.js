@@ -7,10 +7,11 @@ module.exports = new (function(){
 	var _platform = process.platform;
 
 	this.get = function(options){
-		var phpBin, phpVersion, phpIni, phpPresetCmdOptions;
+		var phpBin, phpVersion, phpIni, phpExtensionDir, phpPresetCmdOptions;
 		function phpAgent(options){
 			options = options || {};
 			phpPresetCmdOptions = [];
+			phpExtensionDir = null;
 			if( _platform == 'linux' ){
 				// linux で動くバイナリは含まれていないので、
 				// 内部コマンドをデフォルトにする。
@@ -21,8 +22,9 @@ module.exports = new (function(){
 				phpIni = fs.realpathSync( __dirname+'/../bin/'+_platform+'/php.ini' );
 			}
 			if( _platform == 'win32' ){
+				phpExtensionDir = fs.realpathSync( __dirname+'/../bin/'+_platform+'/5.6.8/ext/' );
 				phpPresetCmdOptions = phpPresetCmdOptions.concat([
-					'-d', 'extension_dir='+fs.realpathSync( __dirname+'/../bin/'+_platform+'/5.6.8/ext/' )
+					'-d', 'extension_dir='+phpExtensionDir
 				]);
 			}
 
@@ -30,17 +32,19 @@ module.exports = new (function(){
 				phpBin = options.bin;
 			}
 			if(options.ini){
-				phpPresetCmdOptions = [];
+				phpPresetCmdOptions = [];// windows向けの -d オプションを削除する
 				phpIni = options.ini;
 			}
 
-			phpPresetCmdOptions = phpPresetCmdOptions.concat([
-				'-c', phpIni
-			]);
+			if( phpIni !== null ){
+				phpPresetCmdOptions = phpPresetCmdOptions.concat([
+					'-c', phpIni
+				]);
+			}
 		}
 
 		/**
-		 * PHPのパスを取得
+		 * PHP のパスを取得
 		 */
 		phpAgent.prototype.getPath = function(){
 			if(phpBin == 'php'){return phpBin;}
@@ -48,11 +52,19 @@ module.exports = new (function(){
 		}
 
 		/**
-		 * php.iniのパスを取得
+		 * php.ini のパスを取得
 		 */
 		phpAgent.prototype.getIniPath = function(){
 			if(phpBin == null){return null;}
 			return fs.realpathSync(phpIni);
+		}
+
+		/**
+		 * phpExtensionDir を取得
+		 */
+		phpAgent.prototype.getExtensionDir = function(){
+			if(phpExtensionDir == null){return null;}
+			return fs.realpathSync(phpExtensionDir);
 		}
 
 		/**
