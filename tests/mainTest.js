@@ -11,7 +11,7 @@ describe('デフォルト設定でコマンドを実行する', function() {
 
 	it("PHPバイナリのパスを取得", function(done) {
 		var phpPath = php.getPath();
-		var path = undefined;
+		var path = null;
 		if(process.platform == 'linux'){
 			path = 'php';
 		}else if(process.platform == 'darwin'){
@@ -20,6 +20,34 @@ describe('デフォルト設定でコマンドを実行する', function() {
 			path = fs.realpathSync(__dirname+'/../bin/win32/5.6.8/php.exe');
 		}
 		assert.equal(phpPath, path);
+		done();
+	});
+
+	it("php.ini のパスを取得", function(done) {
+		var phpIniPath = php.getIniPath();
+		var path = null;
+		if(process.platform == 'linux'){
+			path = null;
+		}else if(process.platform == 'darwin'){
+			path = fs.realpathSync(__dirname+'/../bin/darwin/php.ini');
+		}else if(process.platform == 'win32'){
+			path = fs.realpathSync(__dirname+'/../bin/win32/php.ini');
+		}
+		assert.equal(phpIniPath, path);
+		done();
+	});
+
+	it("ExtensionDir のパスを取得", function(done) {
+		var phpExtensionDir = php.getExtensionDir();
+		var path = null;
+		if(process.platform == 'linux'){
+			path = null;
+		}else if(process.platform == 'darwin'){
+			path = null;
+		}else if(process.platform == 'win32'){
+			path = fs.realpathSync(__dirname+'/../bin/win32/5.6.8/ext/');
+		}
+		assert.equal(phpExtensionDir, path);
 		done();
 	});
 

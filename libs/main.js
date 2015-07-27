@@ -55,7 +55,7 @@ module.exports = new (function(){
 		 * php.ini のパスを取得
 		 */
 		phpAgent.prototype.getIniPath = function(){
-			if(phpBin == null){return null;}
+			if(phpIni == null){return null;}
 			return fs.realpathSync(phpIni);
 		}
 
