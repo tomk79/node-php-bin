@@ -107,7 +107,9 @@ describe('デフォルト設定でコマンドを実行する', function() {
 		var child = php.script(
 			[__dirname+'/php/pdo.php'],
 			function( data, error, code ){
-				// console.log(data);
+				console.log(data);
+				console.log(error);
+				console.log(code);
 				assert.equal(code, 0);
 				assert.equal(data, 'ok');
 				done();
