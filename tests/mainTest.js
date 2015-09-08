@@ -103,6 +103,18 @@ describe('デフォルト設定でコマンドを実行する', function() {
 		);
 	});
 
+	it("script 'pdo.php'", function(done) {
+		var child = php.script(
+			[__dirname+'/php/pdo.php'],
+			function( data, error, code ){
+				console.log(data);
+				assert.equal(code, 0);
+				assert.equal(data, 'ok');
+				done();
+			}
+		);
+	});
+
 	it("spawn 'mbstring.php'", function(done) {
 		var child = php.spawn(
 			[__dirname+'/php/mbstring.php'],
