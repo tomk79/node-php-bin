@@ -54,7 +54,7 @@ describe('デフォルト設定でコマンドを実行する', function() {
 	it("PHPバイナリのバージョン番号を得る", function(done) {
 		var child = php.getPhpVersion(function(gotVersion){
 			var version;
-			console.log(gotVersion);
+			// console.log(gotVersion);
 			if(process.platform == 'linux'){
 				done();
 				return;
@@ -107,7 +107,7 @@ describe('デフォルト設定でコマンドを実行する', function() {
 		var child = php.script(
 			[__dirname+'/php/pdo.php'],
 			function( data, error, code ){
-				console.log(data);
+				// console.log(data);
 				assert.equal(code, 0);
 				assert.equal(data, 'ok');
 				done();
