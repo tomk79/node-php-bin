@@ -37,7 +37,46 @@
 ```js
 var nodePhpBin = require('node-php-bin').get();
 
-nodePhpBin.script('/path/to/php_script.php', function(data, error, code){
+// PHPスクリプトを実行する
+nodePhpBin.script(
+  '/path/to/php_script.php',
+  function(data, error, code){
     console.log(data, error, code);
+  }
+);
+
+// PHPスクリプトを実行
+//   ( require('child_process').spawn() にオプションを渡す場合)
+nodePhpBin.script(
+  '/path/to/php_script.php',
+  {} , // options for require('child_process').spawn()
+  function(data, error, code){
+    console.log(data, error, code);
+  }
+);
+
+// PHP のパスを取得する
+var pathPhp = nodePhpBin.getPath();
+
+// php.ini のパスを取得する
+var pathPhpIni = nodePhpBin.getIniPath();
+
+// Extension Directory のパスを取得する
+var pathPhpExtDir = nodePhpBin.getExtensionDir();
+
+// PHPのバージョンを取得する
+nodePhpBin.getPhpVersion(
+  function(versionStr){
+    console.log(versionStr);
+  }
+);
+```
+
+## Options
+
+```js
+var nodePhpBin = require('node-php-bin').get({
+    'bin': '/path/to/php',
+    'ini': '/path/to/php.ini'
 });
 ```
