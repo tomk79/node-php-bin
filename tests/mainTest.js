@@ -15,7 +15,7 @@ describe('デフォルト設定でコマンドを実行する', function() {
 		if(process.platform == 'linux'){
 			path = 'php';
 		}else if(process.platform == 'darwin'){
-			path = fs.realpathSync(__dirname+'/../bin/darwin/5.6.7/php');
+			path = fs.realpathSync(__dirname+'/../bin/darwin/5.6.8/php');
 		}else if(process.platform == 'win32'){
 			path = fs.realpathSync(__dirname+'/../bin/win32/5.6.8/php.exe');
 		}
@@ -59,7 +59,7 @@ describe('デフォルト設定でコマンドを実行する', function() {
 				done();
 				return;
 			}else if(process.platform == 'darwin'){
-				version = '5.6.7';
+				version = '5.6.8';
 			}else if(process.platform == 'win32'){
 				version = '5.6.8';
 			}
@@ -107,9 +107,7 @@ describe('デフォルト設定でコマンドを実行する', function() {
 		var child = php.script(
 			[__dirname+'/php/pdo.php'],
 			function( data, error, code ){
-				console.log(data);
-				console.log(error);
-				console.log(code);
+				// console.log(data);
 				assert.equal(code, 0);
 				assert.equal(data, 'ok');
 				done();

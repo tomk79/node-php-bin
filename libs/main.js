@@ -18,7 +18,7 @@ module.exports = new (function(){
 				phpBin = 'php';
 				phpIni = null;
 			}else{
-				phpBin = fs.realpathSync( __dirname+'/../bin/'+_platform+'/'+(_platform == 'win32'?'5.6.8':'5.6.7')+'/php'+(_platform == 'win32'?'.exe':'') );
+				phpBin = fs.realpathSync( __dirname+'/../bin/'+_platform+'/'+(_platform == 'win32'?'5.6.8':'5.6.8')+'/php'+(_platform == 'win32'?'.exe':'') );
 				phpIni = fs.realpathSync( __dirname+'/../bin/'+_platform+'/php.ini' );
 			}
 			if( _platform == 'win32' ){
