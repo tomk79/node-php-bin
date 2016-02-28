@@ -39,7 +39,7 @@ var nodePhpBin = require('node-php-bin').get();
 
 // PHPスクリプトを実行する
 nodePhpBin.script(
-  '/path/to/php_script.php',
+  ['/path/to/php_script.php'],
   function(data, error, code){
     console.log(data, error, code);
   }
@@ -48,10 +48,28 @@ nodePhpBin.script(
 // PHPスクリプトを実行
 //   ( require('child_process').spawn() にオプションを渡す場合)
 nodePhpBin.script(
-  '/path/to/php_script.php',
+  ['/path/to/php_script.php'],
   {} , // options for require('child_process').spawn()
   function(data, error, code){
     console.log(data, error, code);
+  }
+);
+
+// PHPスクリプトを実行
+//   (詳細な途中経過を知りたい場合)
+nodePhpBin.script(
+  ['/path/to/php_script.php'],
+  {} , // options for require('child_process').spawn()
+  {
+    "success": function(data){
+      console.log(data);
+    } ,
+    "error": function(data){
+      console.log(data);
+    } ,
+    "complete": function(data, error, code){
+      console.log(data, error, code);
+    }
   }
 );
 

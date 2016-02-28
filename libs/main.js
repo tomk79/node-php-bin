@@ -98,8 +98,24 @@ module.exports = new (function(){
 		 */
 		phpAgent.prototype.script = function(cliParams, options, cb){
 			cb = arguments[arguments.length-1];
-			if( typeof(cb) !== typeof(function(){}) ){cb = function(){};}
+			var scriptOptions = {};
+			var success = function(){};
+			var error = function(){};
+			if( typeof(cb) === typeof({}) ){
+				scriptOptions = cb;
+				cb = scriptOptions.complete || function(){};
+				success = scriptOptions.success || function(){};
+				error = scriptOptions.error || function(){};
+				// console.log(cb);
+				// console.log(scriptOptions);
+			}
+			if( typeof(cb) !== typeof(function(){}) ){
+				cb = function(){};
+			}
 			options = options || {};
+			if(arguments.length < 2){
+				options = {};
+			}
 			if( typeof(options) !== typeof({}) ){
 				options = {};
 			}
@@ -111,9 +127,11 @@ module.exports = new (function(){
 			var data = '';
 			var error = '';
 			child.stdout.on('data', function( row ){
+				success(row.toString());
 				data += row.toString();
 			});
 			child.stderr.on('data', function( err ){
+				error(err.toString());
 				data += err.toString();
 				error += err.toString();
 			});

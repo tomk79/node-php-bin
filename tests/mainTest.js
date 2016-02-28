@@ -91,6 +91,45 @@ describe('デフォルト設定でコマンドを実行する', function() {
 		);
 	});
 
+	it("script 'helloworld.php' - 詳細なレポート - 1", function(done) {
+		var child = php.script(
+			[__dirname+'/php/helloworld.php'],
+			{} ,
+			{
+				"success": function(data){
+					// console.log(data);
+				} ,
+				"error": function(data){
+					// console.log(data);
+				} ,
+				"complete": function( data, error, code ){
+					assert.equal(code, 0);
+					assert.equal(data, 'helloworld');
+					done();
+				}
+			}
+		);
+	});
+
+	it("script 'helloworld.php' - 詳細なレポート - 2", function(done) {
+		var child = php.script(
+			[__dirname+'/php/helloworld.php'],
+			{
+				"success": function(data){
+					// console.log(data);
+				} ,
+				"error": function(data){
+					// console.log(data);
+				} ,
+				"complete": function( data, error, code ){
+					assert.equal(code, 0);
+					assert.equal(data, 'helloworld');
+					done();
+				}
+			}
+		);
+	});
+
 	it("script 'pwd.php'", function(done) {
 		var child = php.script(
 			[__dirname+'/php/pwd.php'],
