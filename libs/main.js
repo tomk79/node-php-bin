@@ -99,13 +99,13 @@ module.exports = new (function(){
 		phpAgent.prototype.script = function(cliParams, options, cb){
 			cb = arguments[arguments.length-1];
 			var scriptOptions = {};
-			var success = function(){};
-			var error = function(){};
+			var cbSuccess = function(){};
+			var cbError = function(){};
 			if( typeof(cb) === typeof({}) ){
 				scriptOptions = cb;
 				cb = scriptOptions.complete || function(){};
-				success = scriptOptions.success || function(){};
-				error = scriptOptions.error || function(){};
+				cbSuccess = scriptOptions.success || function(){};
+				cbError = scriptOptions.error || function(){};
 				// console.log(cb);
 				// console.log(scriptOptions);
 			}
@@ -127,11 +127,11 @@ module.exports = new (function(){
 			var data = '';
 			var error = '';
 			child.stdout.on('data', function( row ){
-				success(row.toString());
+				cbSuccess(row.toString());
 				data += row.toString();
 			});
 			child.stderr.on('data', function( err ){
-				error(err.toString());
+				cbError(err.toString());
 				data += err.toString();
 				error += err.toString();
 			});
