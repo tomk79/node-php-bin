@@ -98,3 +98,25 @@ var nodePhpBin = require('node-php-bin').get({
     'ini': '/path/to/php.ini'
 });
 ```
+
+## for developer
+
+### PHP for Darwin build command
+
+```
+$ curl -Lso php-5.6.8.tar.gz http://jp2.php.net/get/php-5.6.8.tar.gz/from/this/mirror
+$ tar xfz php-5.6.8.tar.gz
+$ cd php-5.6.8
+$ ./configure \
+--enable-mbstring=all \
+--enable-mbregex \
+--with-openssl \
+--without-iconv \
+--prefix=/dev/null \
+--exec-prefix=/dev/null \
+--sysconfdir=/dev/null \
+--with-config-file-path=/dev/null
+$ make
+```
+
+ビルドされた php は、 `./sapi/cli/php` に出力されます。
