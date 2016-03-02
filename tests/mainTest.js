@@ -172,4 +172,25 @@ describe('デフォルト設定でコマンドを実行する', function() {
 			done();
 		});
 	});
+
+	it("spawn 'ssl_request.php'", function(done) {
+		this.timeout(60*1000);
+
+		var child = php.spawn(
+			[__dirname+'/php/ssl_request.php'],
+			{}
+		);
+		var data = '';
+		child.stdout.on('data', function( row ){
+			data += row.toString();
+		});
+		child.stderr.on('data', function( err ){
+			data += err.toString();
+		});
+		child.on('exit', function(code){
+			// console.log(data);
+			assert.equal(code, 0);
+			done();
+		});
+	});
 });
