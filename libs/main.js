@@ -33,9 +33,11 @@ module.exports = new (function(){
 			}
 			if(options.ini === null){
 				phpPresetCmdOptions = [];// windows向けの -d オプションを削除する
+				phpExtensionDir = null;// ExtensionDir も削除
 				phpIni = null;// php.ini のパスも削除
 			}else if(typeof(options.ini) == typeof('')){
 				phpPresetCmdOptions = [];// windows向けの -d オプションを削除する
+				phpExtensionDir = null;// ExtensionDir も削除
 				phpIni = options.ini;
 			}
 
