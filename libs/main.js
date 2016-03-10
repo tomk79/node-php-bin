@@ -28,10 +28,13 @@ module.exports = new (function(){
 				]);
 			}
 
-			if(options.bin){
+			if(typeof(options.bin) == typeof('')){
 				phpBin = options.bin;
 			}
-			if(options.ini){
+			if(options.ini === null){
+				phpPresetCmdOptions = [];// windows向けの -d オプションを削除する
+				phpIni = null;// php.ini のパスも削除
+			}else if(typeof(options.ini) == typeof('')){
 				phpPresetCmdOptions = [];// windows向けの -d オプションを削除する
 				phpIni = options.ini;
 			}

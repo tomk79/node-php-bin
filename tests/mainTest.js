@@ -34,6 +34,10 @@ describe('デフォルト設定でコマンドを実行する', function() {
 			path = fs.realpathSync(__dirname+'/../bin/win32/php.ini');
 		}
 		assert.equal(phpIniPath, path);
+
+		var phpNotIni = getPhp({'ini': null});
+		assert.strictEqual( phpNotIni.getIniPath(), null );
+		assert.strictEqual( phpNotIni.getExtensionDir(), null );
 		done();
 	});
 
