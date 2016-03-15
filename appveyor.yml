@@ -14,7 +14,12 @@ clone_folder: C:\projects\node-php-bin
 environment:
   oauthtoken:
     secure: L7aFaHhJkScePf7T8vMrHn3xtwObmwfSjy36tXMOpb7qY8LXpSeieA6xx1oKiBk9
-  nodejs_version: "0.10.29"
+  matrix:
+    - nodejs_version: "0.10"
+    - nodejs_version: "0.11"
+    - nodejs_version: "0.12"
+    - nodejs_version: "4.2"
+    - nodejs_version: "5.1"
 
 # branches
 branches:
