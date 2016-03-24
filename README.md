@@ -110,6 +110,7 @@ $ cd php-5.6.8
 $ ./configure \
 --enable-mbstring=all \
 --enable-mbregex \
+--enable-zip \
 --with-openssl \
 --without-iconv \
 --prefix=/dev/null \
