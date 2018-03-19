@@ -120,4 +120,16 @@ $ ./configure \
 $ make
 ```
 
+`make install` は実行しないでください。
 ビルドされた php は、 `./sapi/cli/php` に出力されます。
+
+#### Mac OS X El Capitan でビルドが失敗する場合
+
+事前に下記をインストールしてからもう一度実行すると、解決する場合があります。
+
+```
+$ brew install openssl
+$ brew install libxml2
+$ brew link openssl --force
+$ brew link libxml2 --force
+```
