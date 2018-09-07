@@ -136,6 +136,14 @@ $ brew link libxml2 --force
 
 ## Change Log
 
-### node-php-bin v0.2.6 (リリース日未定)
+### node-php-bin v0.2.6 (2018-09-07)
 
 - `script()` と `getPhpVersion()` が、子プロセスを返すように変更。
+
+### node-php-bin v0.2.5 (2018-03-20)
+
+- darwin/php 5.6.8 : ElCapitan でリビルド
+
+### node-php-bin v0.2.4 (2016-03-24)
+
+- add compile option: --enable-zip
