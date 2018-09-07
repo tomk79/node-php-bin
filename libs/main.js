@@ -95,7 +95,7 @@ module.exports = new (function(){
 				// console.log(rtn);
 				cb(rtn);
 			});
-			return this;
+			return child;
 		}
 
 		/**
@@ -143,7 +143,7 @@ module.exports = new (function(){
 			child.on('exit', function(code){
 				cb( data, error, code );
 			});
-			return this;
+			return child;
 		}
 
 		/**

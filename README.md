@@ -133,3 +133,9 @@ $ brew install libxml2
 $ brew link openssl --force
 $ brew link libxml2 --force
 ```
+
+## Change Log
+
+### node-php-bin v0.2.6 (リリース日未定)
+
+- `script()` と `getPhpVersion()` が、子プロセスを返すように変更。
